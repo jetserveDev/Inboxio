@@ -1,6 +1,3 @@
-/* ============================================
-   DESIGN SYSTEM — Inboxio CRM
-   ============================================ */
 
 :root {
   /* === Colors === */
@@ -1385,4 +1382,2712 @@ button {
   .copy-btn {
     width: 100%;
   }
+}
+.chip{
+  cursor: pointer;
+}
+
+
+.modal-staff {
+  max-width: 560px;
+  padding: 0;
+  gap: 0;
+  overflow-y: auto;    /* вертикальный скролл */
+  overflow-x: hidden;  /* по горизонтали закругления остаются обрезанными */
+  position: relative;
+  scrollbar-width: none;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: formIn 0.3s ease forwards;
+}
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  
+  width: 32px;
+  height: 32px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  
+  transition: var(--t-fast);
+  z-index: 1;
+}
+
+.modal-close:hover {
+  background: var(--glass-3);
+  color: var(--text);
+}
+
+/* HEADER с аватаром */
+.staff-modal-header {
+  display: flex;
+  gap: 16px;
+  padding: 28px 24px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.staff-modal-heading {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+}
+
+.staff-modal-name {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.3px;
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.staff-modal-role {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Аватар-инициалы */
+.avatar {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(96, 165, 250, 0.15));
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent-light);
+  letter-spacing: 0.5px;
+}
+
+/* Статус — точка + текст */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot.is-active {
+  background: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.status-dot.is-inactive {
+  background: var(--text-faint);
+}
+
+.status-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Секции с разделителями */
+.staff-modal-section {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.staff-modal-section:last-child {
+  border-bottom: none;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 12px;
+}
+
+/* Контактные строки — actionable rows */
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  margin: 0 -12px;
+  
+  border-radius: 10px;
+  
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  
+  transition: var(--t-fast);
+}
+
+.contact-row + .contact-row {
+  margin-top: 2px;
+}
+
+.contact-row:hover {
+  background: var(--glass-3);
+}
+
+.contact-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  border-radius: 8px;
+  background: var(--glass-2);
+  color: var(--text-secondary);
+  
+  transition: var(--t-fast);
+}
+
+.contact-row:hover .contact-icon {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--accent-light);
+}
+
+.contact-value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-hint {
+  font-size: 12px;
+  color: var(--text-faint);
+  opacity: 0;
+  transition: var(--t-fast);
+  flex-shrink: 0;
+}
+
+.contact-row:hover .contact-hint {
+  opacity: 1;
+}
+
+.contact-row-empty {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.contact-row-empty:hover {
+  background: transparent;
+}
+
+.contact-row-empty:hover .contact-icon {
+  background: var(--glass-2);
+  color: var(--text-secondary);
+}
+
+/* Meta — мелкая информация (логин) */
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.meta-key {
+  color: var(--text-muted);
+}
+
+.meta-value {
+  color: var(--text);
+  font-family: 'SF Mono', Monaco, Menlo, Consolas, monospace;
+  font-size: 13px;
+  background: var(--glass-2);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .staff-modal-header {
+    padding: 24px 20px 20px;
+  }
+  
+  .staff-modal-section {
+    padding: 16px 20px;
+  }
+  
+  .avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
+  
+  .staff-modal-name {
+    font-size: 18px;
+  }
+}
+/* ============================================
+   SERVICES GRID
+   ============================================ */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  padding: var(--space-4);
+
+  background: var(--glass-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  backdrop-filter: var(--blur-md);
+
+  cursor: pointer;
+  text-align: left;
+  user-select: none;
+  color: var(--text);
+
+  transition: var(--t-fast);
+
+  opacity: 0;
+  transform: translateY(8px);
+  animation: cardIn 0.35s ease forwards;
+}
+
+@keyframes cardIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.service-card:hover {
+  background: var(--glass-3);
+  border-color: var(--border);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.service-card:active {
+  transform: translateY(0);
+}
+
+.service-card__top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.service-card__icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(96, 165, 250, 0.15));
+  border: 1px solid rgba(59, 130, 246, 0.3);
+
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent-light);
+  letter-spacing: 0.5px;
+}
+
+.service-card__name {
+  flex: 1;
+  min-width: 0;
+
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  margin: 0;
+  color: var(--text);
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.service-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.service-card__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 13px;
+  color: var(--text-secondary);
+
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--glass-1);
+  border: 1px solid var(--border-subtle);
+}
+
+.service-card__price {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent-light);
+  letter-spacing: -0.2px;
+}
+
+@media (max-width: 480px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+}
+/* ============================================
+   SERVICE MODAL (SaaS-style)
+   ============================================ */
+
+.modal-service {
+  max-width: 480px;
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+  position: relative;
+  
+  opacity: 0;
+  transform: translateY(20px);
+  animation: formIn 0.3s ease forwards;
+}
+
+.service-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 24px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.service-modal-icon {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(96, 165, 250, 0.15));
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-light);
+  letter-spacing: 0.5px;
+}
+
+.service-modal-heading {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.service-modal-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.service-modal-name {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.3px;
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.service-modal-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Длительность + Цена в одну строку */
+.service-modal-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+/* Лейбл с иконкой */
+.service-modal-body .field-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+}
+
+.service-modal-body .field-label svg {
+  color: var(--text-faint);
+}
+
+/* Инпут с суффиксом */
+.input-affix-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-affix {
+  padding-right: 48px;
+  /* убираем стрелочки у number-инпутов — в SaaS их обычно прячут */
+  -moz-appearance: textfield;
+}
+
+.input-with-affix::-webkit-outer-spin-button,
+.input-with-affix::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-affix {
+  position: absolute;
+  right: 14px;
+  font-size: 13px;
+  color: var(--text-faint);
+  pointer-events: none;
+  font-weight: 500;
+}
+
+/* Подсветка суффикса в фокусе */
+.input-affix-wrap:focus-within .input-affix {
+  color: var(--text-muted);
+}
+
+/* Footer с кнопками */
+.service-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: 16px 24px;
+  background: var(--glass-1);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .service-modal-header {
+    padding: 24px 20px 20px;
+  }
+  
+  .service-modal-body {
+    padding: 20px;
+  }
+  
+  .service-modal-footer {
+    padding: 14px 20px;
+  }
+  
+  .service-modal-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+    border-radius: 12px;
+  }
+  
+  .service-modal-name {
+    font-size: 18px;
+  }
+  
+  /* На узких экранах раскладываем длительность и цену в столбик */
+  .service-modal-row {
+    grid-template-columns: 1fr;
+  }
+}
+/* ============================================
+   STAFF MODAL — секция услуг с чекбоксами
+   ============================================ */
+
+/* Заголовок секции с inline-кнопкой сохранения */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.section-header .section-label {
+  margin-bottom: 0;
+}
+
+.section-save-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 8px;
+  
+  animation: fadeSlideIn 0.2s ease;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateX(4px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Список чекбоксов услуг */
+.services-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0 -12px;
+}
+
+.service-check-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: var(--t-fast);
+}
+
+.service-check-row:hover {
+  background: var(--glass-3);
+}
+
+.service-check-row:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+/* Кастомный чекбокс */
+.service-check-box {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  border: 1.5px solid var(--border-strong);
+  background: var(--glass-2);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  transition: var(--t-fast);
+  color: white;
+}
+
+.service-check-row:hover .service-check-box {
+  border-color: var(--accent-light);
+}
+
+.service-check-row.checked .service-check-box {
+  background: var(--accent-gradient);
+  border-color: transparent;
+}
+
+/* Сама галочка — появляется с пружинкой */
+.service-check-box svg {
+  opacity: 0;
+  transform: scale(0.3);
+  transition: opacity 0.15s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.service-check-row.checked .service-check-box svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Текст услуги */
+.service-check-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.service-check-meta {
+  font-size: 12px;
+  color: var(--text-faint);
+  flex-shrink: 0;
+}
+
+.service-check-row.checked .service-check-name {
+  color: var(--text);
+}
+
+/* Пустое состояние, когда услуг в бизнесе нет */
+.services-empty {
+  padding: 16px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  background: var(--glass-2);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border);
+}
+
+/* На мобиле — meta под названием */
+@media (max-width: 480px) {
+  .service-check-row {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    row-gap: 4px;
+  }
+  
+  .service-check-meta {
+    width: 100%;
+    padding-left: 32px;
+  }
+}
+/* ============================================
+   SCHEDULE PAGE
+   ============================================ */
+
+.schedule-card {
+    background: var(--glass-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    backdrop-filter: var(--blur-strong);
+    overflow: hidden;
+}
+
+.schedule-hint {
+    padding: 16px 20px;
+    font-size: 13px;
+    color: var(--text-muted);
+    background: var(--glass-2);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.schedule-rows {
+    display: flex;
+    flex-direction: column;
+}
+
+.schedule-row {
+    display: grid;
+    grid-template-columns: 200px 60px 1fr;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-subtle);
+    transition: var(--t-fast);
+}
+
+.schedule-row:last-child {
+    border-bottom: none;
+}
+
+.schedule-row.is-closed {
+    opacity: 0.55;
+}
+
+.schedule-row.is-closed:hover {
+    opacity: 0.8;
+}
+
+.schedule-day {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.schedule-day-short {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--text-faint);
+}
+
+.schedule-day-full {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Toggle-переключатель "открыт/закрыт" */
+.day-toggle {
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+    
+    border: none;
+    border-radius: 999px;
+    background: var(--glass-3);
+    border: 1px solid var(--border);
+    
+    position: relative;
+    cursor: pointer;
+    transition: var(--t-fast);
+    padding: 0;
+}
+
+.day-toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s;
+}
+
+.day-toggle.is-open {
+    background: var(--accent-gradient);
+    border-color: transparent;
+}
+
+.day-toggle.is-open .day-toggle-thumb {
+    background: white;
+    transform: translateX(20px);
+}
+
+/* Время */
+.schedule-time-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.time-input {
+    width: 110px;
+    padding: 8px 12px;
+    font-family: 'SF Mono', Monaco, Menlo, Consolas, monospace;
+    font-size: 14px;
+    text-align: center;
+    
+    /* Прячем нативную иконку календарика в Chrome */
+    color-scheme: dark;
+}
+
+.time-input::-webkit-calendar-picker-indicator {
+    filter: invert(0.7);
+    cursor: pointer;
+    opacity: 0.5;
+    transition: var(--t-fast);
+}
+
+.time-input::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+.time-dash {
+    color: var(--text-faint);
+    font-size: 14px;
+}
+
+.schedule-closed-label {
+    font-size: 13px;
+    color: var(--text-faint);
+    font-style: italic;
+}
+
+/* Индикатор "Сохранено ✓" */
+.saved-indicator {
+    color: #6ee7b7;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: var(--radius-md);
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    animation: fadeIn 0.3s ease;
+}
+.schedule-card {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: cardIn 0.35s ease forwards;
+}
+.card-grid .entity-card {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: cardIn 0.35s ease forwards;
+}
+/* Мобильная адаптация */
+@media (max-width: 640px) {
+    .schedule-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 16px;
+    }
+    
+    .schedule-day {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 8px;
+    }
+    
+    .schedule-day-short {
+        display: none;
+    }
+    
+    .day-toggle {
+        justify-self: start;
+    }
+    
+    .schedule-time-row {
+        justify-content: stretch;
+    }
+    
+    .time-input {
+        flex: 1;
+        width: auto;
+    }
+}
+/* Подсказка над таблицей графика */
+.schedule-hint {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.schedule-hint-text {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Кнопка "Применить ко всем" */
+.apply-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  
+  padding: 8px 14px;
+  
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  border-radius: var(--radius-md);
+  
+  color: var(--accent-light);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  
+  cursor: pointer;
+  transition: var(--t-fast);
+}
+
+.apply-all-btn:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+  color: #93c5fd;
+  transform: translateY(-1px);
+}
+
+.apply-all-btn:active {
+  transform: translateY(0);
+}
+
+.apply-all-btn svg {
+  flex-shrink: 0;
+}
+/* ============================================
+   STAFF HOURS SECTION (в модалке сотрудника)
+   ============================================ */
+
+.hours-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 -8px;
+}
+
+.hour-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 8px;
+  border-radius: 10px;
+  transition: var(--t-fast);
+}
+
+.hour-row.is-inherited {
+  opacity: 0.7;
+}
+
+.hour-row.is-inherited:hover {
+  opacity: 1;
+  background: var(--glass-2);
+}
+
+.hour-row.is-off .hour-row-body {
+  opacity: 0.6;
+}
+
+.hour-row-day {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hour-row-day-short {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.hour-row-day-full {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.hour-row-body {
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+}
+
+/* Унаследованный день */
+.hour-row-inherited {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.hour-inherited-text {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Переопределённый день */
+.hour-row-override {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.hour-time-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.hour-time-row .time-input {
+  width: 100px;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+.hour-off-label {
+  font-size: 13px;
+  color: var(--text-faint);
+  font-style: italic;
+  flex: 1;
+}
+
+/* Мини-кнопка-ссылка ("Изменить" / "Сбросить") */
+.hour-link-btn {
+  padding: 4px 8px;
+  border: none;
+  background: transparent;
+  color: var(--accent-light);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: var(--t-fast);
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.hour-link-btn:hover {
+  background: rgba(59, 130, 246, 0.12);
+  color: #93c5fd;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 480px) {
+  .hour-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 12px 8px;
+  }
+  
+  .hour-row-day {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 8px;
+  }
+  
+  .hour-time-row .time-input {
+    flex: 1;
+    width: auto;
+  }
+}
+/* ============================================
+   CUSTOMERS PAGE
+   ============================================ */
+
+.customers-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.customers-toolbar .search-wrap {
+  flex: 1;
+  min-width: 200px;
+  max-width: none; /* убираем ограничение, теперь занимает всё доступное */
+}
+
+.customers-toolbar .customers-count {
+  margin-left: auto; /* отталкиваем счётчик к правому краю */
+}
+
+.search-wrap {
+  position: relative;
+  flex: 1;
+  max-width: 480px;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.search-wrap svg {
+  position: absolute;
+  left: 14px;
+  color: var(--text-faint);
+  pointer-events: none;
+}
+
+.search-input {
+  padding-left: 40px;
+  padding-right: 36px;
+}
+
+.search-clear {
+  position: absolute;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 18px;
+  line-height: 1;
+  transition: var(--t-fast);
+}
+
+.search-clear:hover {
+  background: var(--glass-3);
+  color: var(--text);
+}
+
+.customers-count {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* Таблица клиентов */
+.customers-table tbody tr {
+  cursor: pointer;
+}
+
+.customer-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.customer-avatar {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(96, 165, 250, 0.15));
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-light);
+}
+
+.customer-phone {
+  font-family: 'SF Mono', Monaco, Menlo, Consolas, monospace;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.customer-noname {
+  color: var(--text-faint);
+  font-style: italic;
+}
+
+.customer-date {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ============================================
+   CUSTOMER MODAL
+   ============================================ */
+
+.modal-customer {
+  max-width: 480px;
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+  position: relative;
+  
+  opacity: 0;
+  transform: translateY(20px);
+  animation: formIn 0.3s ease forwards;
+}
+
+.customer-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 24px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.customer-modal-avatar {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(96, 165, 250, 0.15));
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-light);
+}
+
+.customer-modal-heading {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.customer-modal-name {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.customer-modal-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.customer-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: 16px 24px;
+  background: var(--glass-1);
+}
+
+@media (max-width: 480px) {
+  .customer-modal-header {
+    padding: 24px 20px 20px;
+  }
+  
+  .customer-modal-body {
+    padding: 20px;
+  }
+  
+  .customer-modal-footer {
+    padding: 14px 20px;
+  }
+  
+  .customer-modal-avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+    border-radius: 12px;
+  }
+}
+/* ============================================
+   IMPORT MODAL
+   ============================================ */
+
+.modal-import {
+  max-width: 520px;
+}
+
+.import-instructions {
+  background: var(--glass-2);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.import-instructions p {
+  margin: 0 0 12px;
+}
+
+.import-hint ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.import-hint li {
+  margin-bottom: 4px;
+}
+
+.import-hint b {
+  color: var(--text);
+}
+
+.import-hint-note {
+  margin-top: 12px !important;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* File picker */
+.import-file-picker {
+  display: flex;
+}
+
+.file-picker-label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-md);
+  background: var(--glass-1);
+  
+  cursor: pointer;
+  transition: var(--t-fast);
+  color: var(--text-secondary);
+}
+
+.file-picker-label:hover {
+  border-color: var(--accent);
+  background: var(--glass-2);
+  color: var(--text);
+}
+
+.file-picker-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.file-picker-hint {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-top: 2px;
+}
+
+.file-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.file-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-size {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-top: 2px;
+}
+
+.file-change {
+  font-size: 12px;
+  color: var(--accent-light);
+  flex-shrink: 0;
+}
+
+/* Result */
+.import-result {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.import-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.import-stat {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  background: var(--glass-2);
+  border: 1px solid var(--border-subtle);
+}
+
+.import-stat-success {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.import-stat-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.import-stat-muted {
+  opacity: 0.7;
+}
+
+.import-stat-number {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.import-stat-success .import-stat-number {
+  color: #6ee7b7;
+}
+
+.import-stat-warning .import-stat-number {
+  color: #fcd34d;
+}
+
+.import-stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.import-detected {
+  font-size: 13px;
+  color: var(--text-muted);
+  padding: 12px;
+  background: var(--glass-2);
+  border-radius: var(--radius-md);
+}
+
+.import-errors {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.import-errors details summary {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  color: var(--text-secondary);
+}
+
+.import-errors details summary:hover {
+  background: var(--glass-2);
+}
+
+.import-errors ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.import-errors li {
+  padding: 4px 0;
+  font-family: 'SF Mono', Monaco, Menlo, Consolas, monospace;
+  font-size: 12px;
+}
+@media (max-width: 768px) {
+  .customers-toolbar {
+    gap: var(--space-2);
+  }
+  
+  .customers-toolbar .search-wrap {
+    flex: 1 1 100%;
+    order: 1; /* поиск идёт первым */
+    min-width: 0;
+  }
+  
+  .customers-toolbar .btn-primary,
+  .customers-toolbar .btn-secondary {
+    flex: 1;
+    order: 2;
+  }
+  
+  .customers-toolbar .customers-count {
+    flex: 1 1 100%;
+    order: 3;
+    margin-left: 0;
+    text-align: right;
+    font-size: 12px;
+  }
+}
+
+/* === Маленькие телефоны === */
+@media (max-width: 480px) {
+  .customers-toolbar .btn-primary,
+  .customers-toolbar .btn-secondary {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+/* ============================================
+   APPOINTMENT MODAL
+   ============================================ */
+
+.modal-appointment {
+  max-width: 520px;
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: formIn 0.3s ease forwards;
+}
+
+.appointment-form {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Выбранный клиент */
+.selected-customer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  font-size: 14px;
+}
+
+/* Dropdown поиска клиента */
+.customer-dropdown {
+  margin-top: 6px;
+  border-radius: var(--radius-md);
+  background: rgba(20, 28, 44, 0.95);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.customer-dropdown-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: var(--t-fast);
+}
+
+.customer-dropdown-item:hover {
+  background: var(--glass-3);
+}
+
+.cdi-name {
+  font-size: 14px;
+}
+
+.cdi-phone {
+  font-size: 12px;
+  color: var(--text-faint);
+  font-family: 'SF Mono', Monaco, monospace;
+}
+
+.customer-dropdown-empty {
+  padding: 14px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+/* Список услуг (переиспользуем service-check-row из секции услуг сотрудника) */
+.appointment-services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Выбор мастера */
+.staff-select-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.staff-select-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 8px 8px;
+  border-radius: 999px;
+  background: var(--glass-2);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: var(--t-fast);
+  font-size: 14px;
+}
+
+.staff-select-item:hover {
+  background: var(--glass-3);
+  border-color: var(--border);
+}
+
+.staff-select-item.selected {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: var(--border-accent);
+}
+
+.staff-select-avatar {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(96, 165, 250, 0.2));
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-light);
+}
+
+/* Дата + время */
+.appointment-datetime {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+/* Итого */
+.appointment-summary {
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: var(--glass-2);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.summary-row strong {
+  color: var(--text);
+}
+
+/* Footer */
+.appointment-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: 16px 24px;
+  background: var(--glass-1);
+  border-top: 1px solid var(--border-subtle);
+}
+
+@media (max-width: 480px) {
+  .appointment-datetime {
+    grid-template-columns: 1fr;
+  }
+}
+/* Создание клиента на лету в модалке записи */
+.customer-create-block {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.customer-create-hint {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.customer-create-divider {
+  border-top: 1px solid var(--border-subtle);
+  padding: 8px;
+}
+
+.customer-create-link {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: var(--accent-light);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: var(--t-fast);
+  font-family: inherit;
+  text-align: left;
+}
+
+.customer-create-link:hover:not(:disabled) {
+  background: rgba(59, 130, 246, 0.12);
+}
+
+.customer-create-link:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+/* ============================================
+   CALENDAR (записи)
+   ============================================ */
+
+:root {
+  --cal-axis-w: 56px;
+}
+
+/* Навигация по дням */
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.calendar-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cal-nav-arrow {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-subtle);
+  background: var(--glass-2);
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: var(--t-fast);
+}
+
+.cal-nav-arrow:hover {
+  background: var(--glass-3);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.cal-today-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.calendar-nav-date {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.cal-today-badge {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+/* Контейнер календаря */
+.calendar {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: auto;
+  max-height: calc(100vh - 240px);
+  background: var(--glass-1);
+}
+
+.calendar-inner {
+  min-width: fit-content;
+}
+
+/* Шапка */
+.calendar-head {
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(15, 22, 36, 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.calendar-corner {
+  width: var(--cal-axis-w);
+  flex-shrink: 0;
+  border-right: 1px solid var(--border-subtle);
+}
+
+.calendar-head-col {
+  flex: 1;
+  min-width: 130px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-right: 1px solid var(--border-subtle);
+}
+
+.calendar-head-col:last-child {
+  border-right: none;
+}
+
+.calendar-master-avatar {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(96, 165, 250, 0.2));
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-light);
+}
+
+.calendar-master-name {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Тело */
+.calendar-body {
+  display: flex;
+  position: relative;
+}
+
+.calendar-axis {
+  width: var(--cal-axis-w);
+  flex-shrink: 0;
+  position: relative;
+  border-right: 1px solid var(--border-subtle);
+}
+
+.calendar-axis-label {
+  position: absolute;
+  right: 8px;
+  padding-top: 3px;
+  font-size: 11px;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.calendar-cols {
+  flex: 1;
+  display: flex;
+  position: relative;
+}
+
+.calendar-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border-subtle);
+  pointer-events: none;
+}
+
+.calendar-col {
+  flex: 1;
+  min-width: 130px;
+  position: relative;
+  border-right: 1px solid var(--border-subtle);
+}
+
+.calendar-col:last-child {
+  border-right: none;
+}
+
+@media (max-width: 640px) {
+  .calendar-head-col,
+  .calendar-col {
+    min-width: 110px;
+  }
+  .calendar-master-name {
+    font-size: 13px;
+  }
+}
+/* ============================================
+   ФИЛЬТР МАСТЕРОВ
+   ============================================ */
+
+.staff-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.staff-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.staff-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: var(--glass-2);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--t-fast);
+  font-family: inherit;
+}
+
+.staff-chip:hover {
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+.staff-chip.active {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: var(--border-accent);
+  color: var(--text);
+}
+
+.staff-chip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-faint);
+  transition: var(--t-fast);
+}
+
+.staff-chip.active .staff-chip-dot {
+  background: var(--accent);
+}
+
+.staff-filter-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.staff-filter-link {
+  border: none;
+  background: transparent;
+  color: var(--accent-light);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: var(--t-fast);
+}
+
+.staff-filter-link:hover {
+  background: rgba(59, 130, 246, 0.12);
+}
+
+.staff-filter-sep {
+  color: var(--text-faint);
+}
+
+/* ============================================
+   БЛОКИ ЗАПИСЕЙ
+   ============================================ */
+
+.appt-block {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  border-radius: 8px;
+  padding: 5px 8px;
+  overflow: hidden;
+  cursor: pointer;
+  font-size: 12px;
+  border-left: 3px solid var(--accent);
+  background: rgba(59, 130, 246, 0.18);
+  backdrop-filter: blur(4px);
+  transition: var(--t-fast);
+  z-index: 2;
+}
+
+.appt-block:hover {
+  background: rgba(59, 130, 246, 0.28);
+  z-index: 3;
+  box-shadow: var(--shadow-md);
+}
+
+.appt-time {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent-light);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.appt-client {
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+
+.appt-services {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+/* Статусы — цвет левой границы и фона */
+.appt-block.status-completed {
+  border-left-color: #10b981;
+  background: rgba(16, 185, 129, 0.15);
+}
+.appt-block.status-completed .appt-time {
+  color: #6ee7b7;
+}
+
+.appt-block.status-no_show {
+  border-left-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.15);
+}
+.appt-block.status-no_show .appt-time {
+  color: #fcd34d;
+}
+/* Кнопка-календарь и поповер выбора даты */
+.cal-picker-wrap {
+  position: relative;
+}
+
+.cal-picker-btn svg {
+  display: block;
+}
+
+.date-picker-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 50;
+  width: 280px;
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  background: rgba(20, 28, 44, 0.98);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(12px);
+
+  opacity: 0;
+  transform: translateY(-6px);
+  animation: dpIn 0.16s ease forwards;
+}
+
+@keyframes dpIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.dp-month-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.dp-nav {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 8px;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: var(--t-fast);
+}
+
+.dp-nav:hover {
+  background: var(--glass-3);
+  color: var(--text);
+}
+
+.dp-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.dp-weekday {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-faint);
+  padding: 4px 0;
+}
+
+.dp-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.dp-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: var(--t-fast);
+  font-family: inherit;
+}
+
+.dp-cell:not(.dp-cell-empty):hover {
+  background: var(--glass-3);
+  color: var(--text);
+}
+
+.dp-cell-empty {
+  cursor: default;
+}
+
+.dp-today {
+  color: var(--accent-light);
+  font-weight: 600;
+}
+
+.dp-today::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 22px;
+}
+
+.dp-selected {
+  background: var(--accent) !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.dp-selected:hover {
+  background: var(--accent) !important;
+}
+/* ============================================
+   ОСОБЫЕ ДНИ (исключения графика)
+   ============================================ */
+
+.exceptions-card {
+    margin-top: var(--space-5);
+}
+
+.exceptions-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.exceptions-title {
+  margin-top: 3px;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.exceptions-subtitle {
+  margin-left: 10px;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.exceptions-empty {
+    padding: 24px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-faint);
+}
+
+.exceptions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.exceptions-past-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-faint);
+    margin: 12px 0 4px;
+}
+
+/* Строка особого дня */
+.exception-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    background: var(--glass-2);
+    border: 1px solid var(--border-subtle);
+    transition: var(--t-fast);
+}
+
+.exception-row:hover {
+    border-color: var(--border);
+}
+
+.exception-row.is-past {
+    opacity: 0.5;
+}
+
+.exception-date-badge {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    background: var(--glass-3);
+    border: 1px solid var(--border-subtle);
+}
+
+.exception-date-day {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text);
+}
+
+.exception-date-month {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-top: 2px;
+}
+
+.exception-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.exception-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.exception-detail {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.exception-hours {
+    color: var(--accent-light);
+    font-variant-numeric: tabular-nums;
+}
+
+.exception-closed {
+    color: #f87171;
+}
+
+.exception-delete {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: var(--text-faint);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--t-fast);
+}
+
+.exception-delete:hover {
+    background: rgba(239, 68, 68, 0.12);
+    color: #f87171;
+}
+
+/* Форма добавления */
+.exception-form {
+    padding: 16px;
+    border-radius: var(--radius-md);
+    background: var(--glass-2);
+    border: 1px solid var(--border);
+    margin-bottom: var(--space-4);
+
+    opacity: 0;
+    transform: translateY(-6px);
+    animation: formIn 0.25s ease forwards;
+}
+
+.exception-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+}
+
+.exception-mode {
+    display: flex;
+    gap: 6px;
+    margin-bottom: var(--space-3);
+}
+
+.exception-mode-btn {
+    flex: 1;
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+    background: var(--glass-1);
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--t-fast);
+    font-family: inherit;
+}
+
+.exception-mode-btn:hover {
+    border-color: var(--border);
+    color: var(--text-secondary);
+}
+
+.exception-mode-btn.active {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: var(--border-accent);
+    color: var(--text);
+}
+
+.exception-time-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: var(--space-3);
+}
+
+.exception-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-2);
+}
+/* ============================================
+   МОДАЛКА ДЕТАЛЕЙ ЗАПИСИ
+   ============================================ */
+
+.modal-appt-details {
+  max-width: 460px;
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: formIn 0.3s ease forwards;
+}
+
+.appt-details-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 24px 24px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.appt-details-avatar {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(96, 165, 250, 0.15));
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-light);
+}
+
+.appt-details-heading {
+  flex: 1;
+  min-width: 0;
+}
+
+.appt-details-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.appt-details-phone {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.appt-details-phone:hover {
+  color: var(--accent-light);
+}
+
+.appt-status-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.appt-status-badge.status-scheduled {
+  background: rgba(59, 130, 246, 0.15);
+  color: #93c5fd;
+}
+.appt-status-badge.status-completed {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+}
+.appt-status-badge.status-cancelled {
+  background: rgba(148, 163, 184, 0.15);
+  color: var(--text-muted);
+}
+.appt-status-badge.status-no_show {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fcd34d;
+}
+
+.appt-details-body {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.appt-details-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.appt-details-key {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.appt-details-value {
+  color: var(--text);
+  text-align: right;
+}
+
+.appt-details-services {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.appt-service-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--text);
+  padding: 2px 0;
+}
+
+.appt-service-price {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.appt-service-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  padding-top: 8px;
+  margin-top: 4px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.appt-details-actions {
+  padding: 16px 24px;
+  background: var(--glass-1);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.appt-status-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-status {
+  flex: 1;
+  padding: 9px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--glass-2);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--t-fast);
+  font-family: inherit;
+}
+
+.btn-status:hover:not(:disabled) {
+  background: var(--glass-3);
+}
+
+.btn-status-done:hover:not(:disabled) {
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #6ee7b7;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.btn-status-noshow:hover:not(:disabled) {
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #fcd34d;
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.btn-status-cancel:hover:not(:disabled) {
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.appt-delete-trigger {
+  font-size: 13px;
+  color: var(--text-faint);
+  align-self: center;
+}
+
+.appt-delete-trigger:hover:not(:disabled) {
+  color: #f87171;
+}
+
+.appt-delete-confirm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+.appt-delete-confirm > span {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.appt-delete-confirm-btns {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.appt-delete-confirm-btns button {
+  flex: 1;
+}
+
+@media (max-width: 480px) {
+  .appt-status-buttons {
+    flex-direction: column;
+  }
+}
+@media (max-width: 480px) {
+    .exception-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* Короткий блок — компактная вёрстка в одну строку */
+.appt-block.appt-compact {
+  padding: 3px 8px;
+  display: flex;
+  align-items: center;
+}
+
+.appt-compact-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+}
+
+.appt-compact-row .appt-time {
+  flex-shrink: 0;
+}
+
+.appt-client-inline {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }

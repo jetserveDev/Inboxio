@@ -26,7 +26,6 @@ function Subscription() {
                 return
             }
 
-            // Редиректим на страницу ЮКассы
             window.location.href = data.confirmation_url
 
         } catch (err) {

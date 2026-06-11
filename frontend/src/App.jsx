@@ -63,7 +63,6 @@ function App() {
       })
       const data = await response.json()
       if(response.ok){
-        alert(data.message)
         navigate('/home')
       }
       if(data.message === "Подписка истекла или не активна"){
@@ -89,7 +88,7 @@ function App() {
       <div className='main-box'>
         <div className="left">
           <h1 className="title">Inboxio</h1>
-          <p className="subtitle">Все заявки в одном месте</p>
+          <p className="subtitle">Все записи в одном месте</p>
         </div>
       <div className='form'>
         <div className='options'>

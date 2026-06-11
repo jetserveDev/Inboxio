@@ -5,6 +5,7 @@ export default function InvitePage(){
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [phone, setPhone] = useState('')
     const [name, setName] = useState('')
     const navigate = useNavigate()
     const token = new URLSearchParams(window.location.search).get("token");
@@ -32,7 +33,7 @@ export default function InvitePage(){
             headers:{
                 'Content-Type':'application/json'
             },
-            body:JSON.stringify({email, username,password,name})
+            body:JSON.stringify({email, username,password,name, phone})
         })
         const data = await result.json()
         if(result.ok){
@@ -62,7 +63,9 @@ export default function InvitePage(){
                     </p>
                 <input value={name} onChange={(e)=>setName(e.target.value)} placeholder="Имя" ></input>
                 <input value={username} onChange={(e)=>setUsername(e.target.value)} placeholder="Username" ></input>
+                <input value={phone} onChange={(e)=>setPhone(e.target.value)} placeholder="Телефон" ></input>
                 <input value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email" ></input>
+
                 <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Пароль" ></input>
                 <button onClick={registration} className="log-reg-btn" >Зарегестрироваться</button>
             </div>
